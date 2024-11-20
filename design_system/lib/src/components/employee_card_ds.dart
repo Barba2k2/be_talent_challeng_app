@@ -3,13 +3,13 @@ import '../theme/colors_ds.dart';
 import '../theme/spacing_ds.dart';
 import '../theme/typography_ds.dart';
 
-class EmployerCardDS extends StatefulWidget {
+class EmployeeCardDS extends StatefulWidget {
   final String title;
   final String? imageUrl;
   final List<Widget> children;
   final bool showDivider;
 
-  const EmployerCardDS({
+  const EmployeeCardDS({
     super.key,
     required this.title,
     this.imageUrl,
@@ -18,10 +18,10 @@ class EmployerCardDS extends StatefulWidget {
   });
 
   @override
-  State<EmployerCardDS> createState() => _EmployerCardDSState();
+  State<EmployeeCardDS> createState() => _EmployeeCardDSState();
 }
 
-class _EmployerCardDSState extends State<EmployerCardDS> {
+class _EmployeeCardDSState extends State<EmployeeCardDS> {
   bool _isExpanded = false;
 
   Widget _buildAvatar() {
