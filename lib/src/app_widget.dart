@@ -13,6 +13,7 @@ class AppWidget extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: ColorsDS.primary,
         fontFamily: 'Helvetica',
+        useMaterial3: false,
       ),
       debugShowCheckedModeBanner: false,
       home: const SplashScreen(),
