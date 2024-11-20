@@ -74,7 +74,7 @@ class EmployeesList extends StatelessWidget {
               itemCount: employees.length,
               itemBuilder: (context, index) {
                 final employee = employees[index];
-                return EmployerCardDS(
+                return EmployeeCardDS(
                   title: employee.name,
                   imageUrl: employee.imageUrl,
                   showDivider: true,
