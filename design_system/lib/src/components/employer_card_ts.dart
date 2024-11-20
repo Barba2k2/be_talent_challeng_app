@@ -69,7 +69,7 @@ class _EmployerCardDSState extends State<EmployerCardDS> {
               icon: Icon(
                 _isExpanded ? Icons.expand_less : Icons.expand_more,
                 color: ColorsDS.primary,
-                size: 24,
+                size: 32,
               ),
               onPressed: () {
                 setState(() {
