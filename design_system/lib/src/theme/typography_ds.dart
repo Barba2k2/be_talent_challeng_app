@@ -7,7 +7,7 @@ class TypographyDS {
     fontFamily: _fontFamily,
     fontSize: 20,
     fontWeight: FontWeight.w500,
-    height: 1.5,
+    height: 1.25,
   );
 
   static const TextStyle h2 = TextStyle(
