@@ -12,8 +12,9 @@ class AppWidget extends StatelessWidget {
       title: 'BeTalent',
       theme: ThemeData(
         primarySwatch: ColorsDS.primary,
-        fontFamily: 'Helvetica'
+        fontFamily: 'Helvetica',
       ),
+      debugShowCheckedModeBanner: false,
       home: const SplashScreen(),
     );
   }
