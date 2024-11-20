@@ -5,14 +5,14 @@ import '../theme/typography_ds.dart';
 
 class EmployerCardDS extends StatefulWidget {
   final String title;
-  final Widget leading;
+  final String? imageUrl;
   final List<Widget> children;
   final bool showDivider;
 
   const EmployerCardDS({
     super.key,
     required this.title,
-    required this.leading,
+    this.imageUrl,
     required this.children,
     this.showDivider = false,
   });
@@ -23,6 +23,22 @@ class EmployerCardDS extends StatefulWidget {
 
 class _EmployerCardDSState extends State<EmployerCardDS> {
   bool _isExpanded = false;
+
+  Widget _buildAvatar() {
+    return CircleAvatar(
+      radius: 20,
+      backgroundColor: ColorsDS.gray05,
+      backgroundImage:
+          widget.imageUrl != null ? NetworkImage(widget.imageUrl!) : null,
+      child: widget.imageUrl == null
+          ? Icon(
+              Icons.person,
+              color: ColorsDS.black,
+              size: 20,
+            )
+          : null,
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -44,7 +60,7 @@ class _EmployerCardDSState extends State<EmployerCardDS> {
               horizontal: SpacingDS.md,
               vertical: SpacingDS.sm,
             ),
-            leading: widget.leading,
+            leading: _buildAvatar(),
             title: Text(
               widget.title,
               style: TypographyDS.h2,
