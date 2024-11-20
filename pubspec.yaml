@@ -14,7 +14,7 @@ dependencies:
     sdk: flutter
   flutter_localizations:
     sdk: flutter
-  betalent_ds:
+  design_system:
     path: design_system
 
 dev_dependencies:
