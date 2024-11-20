@@ -1,7 +1,13 @@
 part of '../home_screen.dart';
 
 class _EmployessScreenBody extends StatelessWidget {
-  const _EmployessScreenBody();
+  const _EmployessScreenBody({
+    required this.controller,
+    required this.onRetry,
+  });
+
+  final EmployeesController controller;
+  final VoidCallback onRetry;
 
   @override
   Widget build(BuildContext context) {
@@ -29,7 +35,12 @@ class _EmployessScreenBody extends StatelessWidget {
             height: SpacingDS.xl,
           ),
           Expanded(
-            child: EmployeesList(),
+            child: EmployeesList(
+              employees: controller.employees,
+              isLoading: controller.isLoading,
+              error: controller.error,
+              onRetry: onRetry,
+            ),
           ),
         ],
       ),
