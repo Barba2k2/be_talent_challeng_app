@@ -1,9 +1,7 @@
 part of '../home_screen.dart';
 
 class _EmployessScreenBody extends StatelessWidget {
-  const _EmployessScreenBody({
-    super.key,
-  });
+  const _EmployessScreenBody();
 
   @override
   Widget build(BuildContext context) {
