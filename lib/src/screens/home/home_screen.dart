@@ -8,55 +8,85 @@ class EmployeesScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: ColorsDS.white,
-      body: SafeArea(
-        child: Column(
-          children: [
+    return SafeArea(
+      child: Scaffold(
+        backgroundColor: ColorsDS.white,
+        appBar: AppBarDS(
+          leading: CircleAvatar(
+            radius: 22,
+            backgroundColor: ColorsDS.gray05,
+            child: Text(
+              'CG',
+              style: TypographyDS.h2,
+            ),
+          ),
+          actions: [
             Padding(
-              padding: const EdgeInsets.all(SpacingDS.md),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              padding: const EdgeInsets.symmetric(horizontal: SpacingDS.lg),
+              child: Stack(
+                alignment: Alignment.center,
                 children: [
-                  CircleAvatar(
-                    backgroundColor: ColorsDS.gray05,
-                    child: Text(
-                      'CG',
-                      style: TypographyDS.h2,
-                    ),
+                  Icon(
+                    Icons.notifications_none_rounded,
+                    color: ColorsDS.black,
+                    size: 36,
                   ),
-                  Container(
-                    padding: const EdgeInsets.all(SpacingDS.xs),
-                    decoration: const BoxDecoration(
-                      color: ColorsDS.primary,
-                      shape: BoxShape.circle,
-                    ),
-                    child: Text(
-                      '02',
-                      style: TypographyDS.h3.copyWith(color: ColorsDS.white),
+                  Positioned(
+                    right: 0,
+                    top: 14,
+                    child: Container(
+                      width: 20,
+                      height: 20,
+                      decoration: const BoxDecoration(
+                        color: ColorsDS.primary,
+                        shape: BoxShape.circle,
+                      ),
+                      child: Center(
+                        child: Text(
+                          '02',
+                          textAlign: TextAlign.center,
+                          style: TypographyDS.h3.copyWith(
+                            color: ColorsDS.white,
+                            fontSize: 8,
+                            fontWeight: FontWeight.w700,
+                          ),
+                        ),
+                      ),
                     ),
                   ),
                 ],
               ),
             ),
-            Expanded(
-              child: Padding(
-                padding: const EdgeInsets.all(SpacingDS.md),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    const Text('Funcionários', style: TypographyDS.h1),
-                    const SizedBox(height: SpacingDS.md),
-                    const SearchInputDS(hint: 'Pesquisar funcionário'),
-                    const SizedBox(height: SpacingDS.md),
-                    Expanded(
-                      child: EmployeesList(),
-                    ),
-                  ],
+          ],
+        ),
+        body: Padding(
+          padding: const EdgeInsets.symmetric(
+            horizontal: SpacingDS.md,
+            vertical: SpacingDS.xl,
+          ),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                'Funcionários',
+                style: TypographyDS.h1.copyWith(
+                  color: ColorsDS.black,
                 ),
               ),
-            ),
-          ],
+              const SizedBox(
+                height: SpacingDS.md,
+              ),
+              const SearchInputDS(
+                hint: 'Pesquisar',
+              ),
+              const SizedBox(
+                height: SpacingDS.md,
+              ),
+              Expanded(
+                child: EmployeesList(),
+              ),
+            ],
+          ),
         ),
       ),
     );
