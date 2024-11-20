@@ -10,12 +10,12 @@ class ButtonDS extends StatelessWidget {
   final bool disabled;
 
   const ButtonDS({
-    Key? key,
+    super.key,
     required this.text,
     required this.onPressed,
     this.isLoading = false,
     this.disabled = false,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
