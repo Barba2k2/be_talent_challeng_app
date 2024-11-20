@@ -7,13 +7,15 @@ class EmployerCardDS extends StatefulWidget {
   final String title;
   final Widget leading;
   final List<Widget> children;
+  final bool showDivider;
 
   const EmployerCardDS({
-    Key? key,
+    super.key,
     required this.title,
     required this.leading,
     required this.children,
-  }) : super(key: key);
+    this.showDivider = false,
+  });
 
   @override
   State<EmployerCardDS> createState() => _EmployerCardDSState();
@@ -24,11 +26,24 @@ class _EmployerCardDSState extends State<EmployerCardDS> {
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      margin: const EdgeInsets.symmetric(vertical: SpacingDS.xs),
-      child: Column(
-        children: [
-          ListTile(
+    return Column(
+      children: [
+        Container(
+          decoration: widget.showDivider
+              ? BoxDecoration(
+                  border: Border(
+                    bottom: BorderSide(
+                      color: ColorsDS.gray05,
+                      width: 1,
+                    ),
+                  ),
+                )
+              : null,
+          child: ListTile(
+            contentPadding: const EdgeInsets.symmetric(
+              horizontal: SpacingDS.md,
+              vertical: SpacingDS.sm,
+            ),
             leading: widget.leading,
             title: Text(
               widget.title,
@@ -38,6 +53,7 @@ class _EmployerCardDSState extends State<EmployerCardDS> {
               icon: Icon(
                 _isExpanded ? Icons.expand_less : Icons.expand_more,
                 color: ColorsDS.primary,
+                size: 24,
               ),
               onPressed: () {
                 setState(() {
@@ -46,15 +62,15 @@ class _EmployerCardDSState extends State<EmployerCardDS> {
               },
             ),
           ),
-          if (_isExpanded)
-            Padding(
-              padding: const EdgeInsets.all(SpacingDS.md),
-              child: Column(
-                children: widget.children,
-              ),
+        ),
+        if (_isExpanded)
+          Padding(
+            padding: const EdgeInsets.all(SpacingDS.md),
+            child: Column(
+              children: widget.children,
             ),
-        ],
-      ),
+          ),
+      ],
     );
   }
 }
