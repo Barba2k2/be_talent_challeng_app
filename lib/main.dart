@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
-import 'src/app.dart';
+import 'src/app_widget.dart';
 
-void main() async {
+void main() {
   runApp(
-    const MyApp(),
+    const AppWidget(),
   );
 }
