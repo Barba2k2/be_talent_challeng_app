@@ -3,30 +3,67 @@ import 'package:flutter/material.dart';
 import '../models/employee.dart';
 
 class EmployeesList extends StatelessWidget {
-  EmployeesList({super.key});
+  final List<Employee> employees;
+  final bool isLoading;
+  final String? error;
+  final VoidCallback onRetry;
 
-  final List<Employee> employees = [
-    Employee(
-      name: 'Giovana L. Arruda',
-      position: 'Front-end',
-      admissionDate: '00/00/0000',
-      phone: '+55 (55) 55555-555',
-      imageUrl: null,
-    ),
-  ];
+  const EmployeesList({
+    super.key,
+    required this.employees,
+    required this.isLoading,
+    required this.error,
+    required this.onRetry,
+  });
 
   @override
   Widget build(BuildContext context) {
+    if (isLoading) {
+      return const Center(
+        child: CircularProgressIndicator(),
+      );
+    }
+
+    if (error != null) {
+      return Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text(
+              error!,
+              style: TypographyDS.h2.copyWith(
+                color: ColorsDS.black,
+              ),
+              textAlign: TextAlign.center,
+            ),
+            const SizedBox(height: SpacingDS.md),
+            ButtonDS(
+              text: 'Tentar novamente',
+              onPressed: onRetry,
+            ),
+          ],
+        ),
+      );
+    }
+
+    if (employees.isEmpty) {
+      return Center(
+        child: Text(
+          'Nenhum funcionário encontrado',
+          style: TypographyDS.h2.copyWith(
+            color: ColorsDS.black,
+          ),
+        ),
+      );
+    }
+
     return Container(
       decoration: BoxDecoration(
-        border: Border.all(
-          color: ColorsDS.gray10,
-        ),
+        border: Border.all(color: ColorsDS.gray10),
         borderRadius: BorderRadius.circular(8),
       ),
       child: Column(
         children: [
-          // Cabeçalho da lista
           Container(
             padding: const EdgeInsets.symmetric(
               horizontal: SpacingDS.md,
@@ -68,7 +105,6 @@ class EmployeesList extends StatelessWidget {
               ],
             ),
           ),
-          // Lista de funcionários
           Expanded(
             child: ListView.builder(
               itemCount: employees.length,
@@ -80,8 +116,14 @@ class EmployeesList extends StatelessWidget {
                   showDivider: true,
                   children: [
                     _buildInfoRow('Cargo', employee.position),
-                    _buildInfoRow('Data de admissão', employee.admissionDate),
-                    _buildInfoRow('Telefone', employee.phone),
+                    _buildInfoRow(
+                      'Data de admissão',
+                      employee.formattedAdmissionDate,
+                    ),
+                    _buildInfoRow(
+                      'Telefone',
+                      employee.formattedPhone,
+                    ),
                   ],
                 );
               },
@@ -94,24 +136,12 @@ class EmployeesList extends StatelessWidget {
 
   Widget _buildInfoRow(String label, String value) {
     return Padding(
-      padding: EdgeInsets.symmetric(vertical: SpacingDS.sm),
+      padding: const EdgeInsets.symmetric(vertical: SpacingDS.sm),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Text(
-            label,
-            style: TypographyDS.h2.copyWith(
-              color: ColorsDS.black,
-              fontWeight: FontWeight.w500,
-            ),
-          ),
-          Text(
-            value,
-            style: TypographyDS.h2.copyWith(
-              color: ColorsDS.black,
-              fontWeight: FontWeight.w400,
-            ),
-          ),
+          Text(label, style: TypographyDS.h3),
+          Text(value, style: TypographyDS.h3),
         ],
       ),
     );
