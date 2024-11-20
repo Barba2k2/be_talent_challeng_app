@@ -10,22 +10,22 @@ class SearchInputDS extends StatelessWidget {
   final TextEditingController? controller;
 
   const SearchInputDS({
-    Key? key,
+    super.key,
     this.hint = 'Pesquisar',
     this.onChanged,
     this.controller,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
     return Container(
       padding: const EdgeInsets.symmetric(
-        horizontal: SpacingDS.md,
+        horizontal: SpacingDS.lg,
       ),
       decoration: BoxDecoration(
-        color: ColorsDS.gray10,
+        color: ColorsDS.gray05,
         borderRadius: BorderRadius.circular(
-          SpacingDS.sm,
+          100,
         ),
       ),
       child: TextField(
@@ -34,12 +34,12 @@ class SearchInputDS extends StatelessWidget {
         decoration: InputDecoration(
           hintText: hint,
           hintStyle: TypographyDS.h3.copyWith(
-            color: ColorsDS.black.withOpacity(0.5),
+            color: ColorsDS.black,
           ),
           border: InputBorder.none,
           icon: Icon(
             Icons.search,
-            color: ColorsDS.black.withOpacity(0.5),
+            color: ColorsDS.black,
           ),
         ),
       ),
