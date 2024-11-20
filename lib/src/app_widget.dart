@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:design_system/design_system.dart';
 
+import 'screens/splash_screen/splash_screen.dart';
+
 class AppWidget extends StatelessWidget {
   const AppWidget({super.key});
 
@@ -10,7 +12,9 @@ class AppWidget extends StatelessWidget {
       title: 'BeTalent',
       theme: ThemeData(
         primarySwatch: ColorsDS.primary,
+        fontFamily: 'Helvetica'
       ),
+      home: const SplashScreen(),
     );
   }
 }
