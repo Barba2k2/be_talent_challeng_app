@@ -63,6 +63,7 @@ class EmployeesList extends StatelessWidget {
         borderRadius: BorderRadius.circular(8),
       ),
       child: Column(
+        mainAxisSize: MainAxisSize.min,
         children: [
           Container(
             padding: const EdgeInsets.symmetric(
@@ -105,30 +106,23 @@ class EmployeesList extends StatelessWidget {
               ],
             ),
           ),
-          Expanded(
-            child: ListView.builder(
-              itemCount: employees.length,
-              itemBuilder: (context, index) {
-                final employee = employees[index];
-                return EmployeeCardDS(
-                  title: employee.name,
-                  imageUrl: employee.imageUrl,
-                  showDivider: true,
-                  children: [
-                    _buildInfoRow('Cargo', employee.position),
-                    _buildInfoRow(
-                      'Data de admissão',
-                      employee.formattedAdmissionDate,
-                    ),
-                    _buildInfoRow(
-                      'Telefone',
-                      employee.formattedPhone,
-                    ),
-                  ],
-                );
-              },
-            ),
-          ),
+          Column(
+            children: employees.map((employee) {
+              return EmployeeCardDS(
+                title: employee.name,
+                imageUrl: employee.imageUrl,
+                showDivider: true,
+                children: [
+                  _buildInfoRow('Cargo', employee.position),
+                  _buildInfoRow(
+                    'Data de admissão',
+                    employee.formattedAdmissionDate,
+                  ),
+                  _buildInfoRow('Telefone', employee.formattedPhone),
+                ],
+              );
+            }).toList(),
+          )
         ],
       ),
     );
