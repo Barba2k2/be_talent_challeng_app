@@ -29,14 +29,21 @@ class NotificationBadge extends StatelessWidget {
               color: ColorsDS.primary,
               shape: BoxShape.circle,
             ),
-            child: Center(
-              child: Text(
-                count,
-                textAlign: TextAlign.center,
-                style: TypographyDS.h3.copyWith(
-                  color: ColorsDS.white,
-                  fontSize: 8,
-                  fontWeight: FontWeight.w700,
+            child: FittedBox(
+              fit: BoxFit.scaleDown,
+              child: Padding(
+                padding: const EdgeInsets.symmetric(
+                  vertical: 4.0,
+                  horizontal: 2.0,
+                ),
+                child: Text(
+                  count,
+                  textAlign: TextAlign.center,
+                  style: TypographyDS.h3.copyWith(
+                    color: ColorsDS.white,
+                    fontSize: 10,
+                    fontWeight: FontWeight.w700,
+                  ),
                 ),
               ),
             ),
