@@ -90,6 +90,14 @@ void main() {
         expect(controller.employees.length, 1);
         expect(controller.employees.first.name, 'Maria');
       });
+
+      test('should return empty list when no matches found', () {
+        // Act
+        controller.searchEmployees('xyz');
+
+        // Assert
+        expect(controller.employees, isEmpty);
+      });
     });
   });
 }
