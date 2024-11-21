@@ -28,19 +28,23 @@ class _EmployessScreenBody extends StatelessWidget {
           const SizedBox(
             height: SpacingDS.md,
           ),
-          const SearchInputDS(
+          SearchInputDS(
             hint: 'Pesquisar',
+            onChanged: controller.searchEmployees,
           ),
           const SizedBox(
             height: SpacingDS.xl,
           ),
-          Expanded(
-            child: EmployeesList(
-              employees: controller.employees,
-              isLoading: controller.isLoading,
-              error: controller.error,
-              onRetry: onRetry,
-            ),
+          AnimatedBuilder(
+            animation: controller,
+            builder: (context, _) {
+              return EmployeesList(
+                employees: controller.employees,
+                isLoading: controller.isLoading,
+                error: controller.error,
+                onRetry: onRetry,
+              );
+            },
           ),
         ],
       ),
